@@ -1,5 +1,6 @@
 package pizza_classes;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * This class represents a Pizza.
  * @author Kevin Cubillos, Ethan Chang
  */
-public abstract class Pizza {
+public abstract class Pizza implements Serializable {
 
     /** The amount of price upcharge for a size increase. **/
     protected static final double SIZE_INCREASE_UPCHARGE = 2.00;

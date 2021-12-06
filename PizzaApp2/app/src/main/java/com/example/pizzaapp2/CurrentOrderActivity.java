@@ -26,7 +26,7 @@ public class CurrentOrderActivity extends Activity {
         setContentView(R.layout.current_order_activity);
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
-        currOrder = data.getParcelable("order");
+        currOrder = (Order) data.getSerializable("order");
         storeOrders = intent.getParcelableExtra("store");
         phoneNumber = findViewById(R.id.phoneNumber);
         phoneNumber.setText(currOrder.getPhoneNumber());

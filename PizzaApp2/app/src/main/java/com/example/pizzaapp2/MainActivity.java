@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
             Intent addPizza = new Intent(this, AddPizzaActivity.class);
             addPizza.putExtra("phoneNumber", getPhoneNumber());
             addPizza.putExtra("name", view.getContentDescription());
-            addPizza.putExtra("store", (Parcelable) storeOrders);
+            addPizza.putExtra("store", storeOrders);
             addPizza.putExtra("order", currOrder);
-            startActivity(addPizza);
+            startActivityForResult(addPizza,1);
         }
     }
 
@@ -117,12 +117,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (data.hasExtra("key1") && data.hasExtra("key2")) {
-                Toast.makeText(
-                        this,
-                        "Your result is :  "+ data.getExtras().getString("key1") + " " + data.getExtras().getString("key2"),
-                        Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            Toast.makeText(getApplicationContext(), "It Worked!", Toast.LENGTH_SHORT).show();
+            if (data.hasExtra("order")) {
+                Order tempOrder = (Order)data.getSerializableExtra("order");
+                currOrder = tempOrder;
             }
         }
     }

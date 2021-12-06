@@ -40,7 +40,7 @@ public class AddPizzaActivity extends AppCompatActivity{
         setContentView(R.layout.add_pizza_activity);
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
-        currOrder = data.getParcelable("order");
+        currOrder = (Order) data.getSerializable("order");
         currentToppings = findViewById(R.id.currentToppings);
         unusedToppings = findViewById(R.id.unusedToppings);
         orderUpButton = findViewById(R.id.orderUpButton);
@@ -143,6 +143,7 @@ public class AddPizzaActivity extends AppCompatActivity{
         Intent data = new Intent();
         data.putExtra("key1", "value1");
         data.putExtra("key2", "value2");
+        data.putExtra("order", currOrder);
 // Activity finished return ok, return the data
         setResult(RESULT_OK, data);
         finish();
