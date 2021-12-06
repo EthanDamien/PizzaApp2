@@ -14,13 +14,13 @@ public class PizzaMaker {
     public static Pizza createPizza(String flavor) {
         Pizza pizza;
         switch (flavor){
-            case "deluxe":
+            case "Deluxe Pizza":
                 pizza = new DeluxePizza();
                 return pizza;
-            case "hawaiian":
+            case "Hawaiian Pizza":
                 pizza = new HawaiianPizza();
                 return pizza;
-            case "pepperoni":
+            case "Pepperoni Pizza":
                 pizza = new PepperoniPizza();
                 return pizza;
             default:
