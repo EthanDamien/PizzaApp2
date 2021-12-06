@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.pizzaapp2.databinding.ActivityMainBinding;
 
+import android.os.Parcelable;
 import android.text.Editable;
 import android.view.Menu;
 import android.view.View;
@@ -16,9 +17,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 import pizza_classes.Order;
+import pizza_classes.StoreOrders;
 
 public class MainActivity extends AppCompatActivity {
+    private StoreOrders storeOrders = new StoreOrders();
+    private Order currOrder;
     private EditText phoneField;
     private ImageButton DeluxePizzaButton, PepperoniPizzaButton, HawaiianPizzaButton;
     private AppBarConfiguration appBarConfiguration;
@@ -49,9 +55,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAddPizzaActivity(View view) {
         if(validPhoneNumber()) {
+            if(currOrder == null || !currOrder.getPhoneNumber().equals(this.getPhoneNumber())){
+                currOrder = new Order(this.getPhoneNumber());
+            }
+            if(storeOrders.contains(currOrder.getPhoneNumber())){
+                Toast.makeText(getApplicationContext(), "Customer Already has an Order", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent addPizza = new Intent(this, AddPizzaActivity.class);
+            addPizza.putExtra("phoneNumber", getPhoneNumber());
             addPizza.putExtra("name", view.getContentDescription());
+            addPizza.putExtra("store", (Parcelable) storeOrders);
+            addPizza.putExtra("currOrder",(Parcelable) currOrder);
             startActivity(addPizza);
+        }
+    }
+
+    public void openStoreOrdersActivity(View view){
+        Intent allOrders = new Intent(this, StoreOrdersActivity.class);
+        allOrders.putExtra("store", (Parcelable) storeOrders);
+        startActivity(allOrders);
+    }
+
+    public void openCurrentOrderActivity(View view){
+        if(validPhoneNumber()) {
+            Intent currOrder = new Intent(this, CurrentOrderActivity.class);
+            currOrder.putExtra("phoneNumber", getPhoneNumber());
+            currOrder.putExtra("store", (Parcelable) storeOrders);
+            startActivity(currOrder);
         }
     }
 
@@ -59,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validPhoneNumber(){
         phoneField = findViewById(R.id.phoneField);
-        String number = phoneField.getText().toString();
+        String number = getPhoneNumber();
         try{
             if(number.equals("") || number.length() != Order.PHONE_NUMBER_LENGTH){
                 Toast.makeText(getApplicationContext(), "Please Enter a Valid Number First", Toast.LENGTH_SHORT).show();
@@ -74,5 +105,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private String getPhoneNumber(){
+        return phoneField.getText().toString();
+    }
 
 }

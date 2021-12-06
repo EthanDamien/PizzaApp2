@@ -1,5 +1,8 @@
 package pizza_classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -7,7 +10,7 @@ import java.util.ArrayList;
  * This class holds all the orders that have been placed.
  * @author Kevin Cubillos, Ethan Chang
  */
-public class StoreOrders {
+public class StoreOrders implements Parcelable {
     /** The list of orders. **/
     private ArrayList<Order> orders;
     /** Empty list of orders **/
@@ -19,6 +22,22 @@ public class StoreOrders {
     public StoreOrders() {
         orders = new ArrayList<>();
     }
+
+    protected StoreOrders(Parcel in) {
+        orders = in.createTypedArrayList(Order.CREATOR);
+    }
+
+    public static final Creator<StoreOrders> CREATOR = new Creator<StoreOrders>() {
+        @Override
+        public StoreOrders createFromParcel(Parcel in) {
+            return new StoreOrders(in);
+        }
+
+        @Override
+        public StoreOrders[] newArray(int size) {
+            return new StoreOrders[size];
+        }
+    };
 
     /**
      * Adds an order to the list of orders.
@@ -117,5 +136,15 @@ public class StoreOrders {
      */
     public int getSize(){
         return orders.size();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(orders);
     }
 }

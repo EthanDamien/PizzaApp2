@@ -45,6 +45,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ListView
+        android:id="@+id/allOrders"
         android:layout_width="400dp"
         android:layout_height="402dp"
         android:layout_marginStart="7dp"
