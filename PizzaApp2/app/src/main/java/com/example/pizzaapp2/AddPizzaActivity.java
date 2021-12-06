@@ -39,21 +39,17 @@ public class AddPizzaActivity extends AppCompatActivity {
         pizzaName = findViewById(R.id.pizzaName);
         String name = intent.getStringExtra("name");
         pizzaName.setText(name);
-        String uri = "marios_pizza.jpg";
         switch(name) {
             case "Deluxe Pizza":
-                uri = "@drawable/deluxe_pizza.jpg";
+                pizzaPicture.setImageDrawable(getDrawable(R.drawable.deluxe_pizza));
                 break;
             case "Pepperoni Pizza":
-                uri = "@drawable/pepperoni_pizza.jpg";
+                pizzaPicture.setImageDrawable(getDrawable(R.drawable.pepperoni_pizza));
                 break;
             case "Hawaiian Pizza":
-                uri = "@drawable.hawaiian_pizza.jpg";
+                pizzaPicture.setImageDrawable(getDrawable(R.drawable.hawaiian_pizza));
                 break;
         }
-        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-        Drawable res = getResources().getDrawable(imageResource);
-        pizzaPicture.setImageDrawable(res);
 
     }
 

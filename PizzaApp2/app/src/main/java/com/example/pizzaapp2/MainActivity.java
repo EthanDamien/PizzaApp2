@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.example.pizzaapp2.databinding.ActivityMainBinding;
 
 import android.view.Menu;
+import android.view.View;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void openAddPizzaActivity(ImageButton button) {
+    public void openAddPizzaActivity(View view) {
         Intent addPizza = new Intent(this, AddPizzaActivity.class);
-        addPizza.putExtra("name", button.getContentDescription());
+        addPizza.putExtra("name", view.getContentDescription());
         startActivity(addPizza);
     }
 
