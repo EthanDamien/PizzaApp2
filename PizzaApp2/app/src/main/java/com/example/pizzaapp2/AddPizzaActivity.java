@@ -41,7 +41,6 @@ public class AddPizzaActivity extends AppCompatActivity{
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
         currOrder = data.getParcelable("order");
-        Toast.makeText(getApplicationContext(), currOrder.getPhoneNumber(), Toast.LENGTH_SHORT).show();
         currentToppings = findViewById(R.id.currentToppings);
         unusedToppings = findViewById(R.id.unusedToppings);
         orderUpButton = findViewById(R.id.orderUpButton);
@@ -140,7 +139,13 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     public void orderUp(View view){
         currOrder.addPizza(pizza);
-        super.onBackPressed();
+        Toast.makeText(getApplicationContext(), currOrder.getPizzas().get(0).toString(), Toast.LENGTH_SHORT).show();
+        Intent data = new Intent();
+        data.putExtra("key1", "value1");
+        data.putExtra("key2", "value2");
+// Activity finished return ok, return the data
+        setResult(RESULT_OK, data);
+        finish();
     }
 
 //    public void addTopping(View view){

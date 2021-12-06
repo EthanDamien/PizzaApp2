@@ -20,7 +20,7 @@ public class StoreOrdersActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_orders_activity);
         Intent intent = getIntent();
-        storeOrder = (StoreOrders) intent.getParcelableExtra("store");
+        storeOrder = intent.getParcelableExtra("store");
     }
 
     private void setupOrders(Intent intent){

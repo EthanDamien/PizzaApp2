@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openAddPizzaActivity(View view) {
-        if(validPhoneNumber()) {
-            if(currOrder == null || !currOrder.getPhoneNumber().equals(this.getPhoneNumber())){
+        if (validPhoneNumber()) {
+            if (currOrder == null || !currOrder.getPhoneNumber().equals(this.getPhoneNumber())) {
                 currOrder = new Order(this.getPhoneNumber());
             }
-            if(storeOrders.contains(currOrder.getPhoneNumber())){
+            if (storeOrders.contains(currOrder.getPhoneNumber())) {
                 Toast.makeText(getApplicationContext(), "Customer Already has an Order", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -71,39 +71,62 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openStoreOrdersActivity(View view){
+    public void openStoreOrdersActivity(View view) {
         Intent allOrders = new Intent(this, StoreOrdersActivity.class);
         allOrders.putExtra("store", (Parcelable) storeOrders);
         startActivity(allOrders);
     }
 
-    public void openCurrentOrderActivity(View view){
-        if(validPhoneNumber()) {
-            Intent currOrder = new Intent(this, CurrentOrderActivity.class);
-            currOrder.putExtra("phoneNumber", getPhoneNumber());
-            currOrder.putExtra("store", (Parcelable) storeOrders);
-            startActivity(currOrder);
+    public void openCurrentOrderActivity(View view) {
+//        Toast.makeText(getApplicationContext(),
+//                currOrder.size(), Toast.LENGTH_SHORT).show();
+        if (validPhoneNumber()) {
+            if (currOrder == null || !currOrder.getPhoneNumber().equals(this.getPhoneNumber())) {
+                currOrder = new Order(this.getPhoneNumber());
+            }
+            if (storeOrders.contains(currOrder.getPhoneNumber())) {
+                Toast.makeText(getApplicationContext(), "Customer Already has an Order", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent currentOrder = new Intent(this, CurrentOrderActivity.class);
+            currentOrder.putExtra("phoneNumber", getPhoneNumber());
+            currentOrder.putExtra("store", storeOrders);
+            currentOrder.putExtra("order", currOrder);
+            startActivity(currentOrder);
         }
     }
 
 
-
-    private boolean validPhoneNumber(){
+    private boolean validPhoneNumber() {
         phoneField = findViewById(R.id.phoneField);
         String number = getPhoneNumber();
-        try{
-            if(number.equals("") || number.length() != Order.PHONE_NUMBER_LENGTH){
+        try {
+            if (number.equals("") || number.length() != Order.PHONE_NUMBER_LENGTH) {
                 Toast.makeText(getApplicationContext(), "Please Enter a Valid Number First", Toast.LENGTH_SHORT).show();
                 return false;
             }
             Long.parseLong(number);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Not a Number", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (data.hasExtra("key1") && data.hasExtra("key2")) {
+                Toast.makeText(
+                        this,
+                        "Your result is :  "+ data.getExtras().getString("key1") + " " + data.getExtras().getString("key2"),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     private String getPhoneNumber(){
         return phoneField.getText().toString();
