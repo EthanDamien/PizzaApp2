@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.PizzaApp2.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/uglyBrown"
+            app:popupTheme="@style/Theme.PizzaApp2.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OrderPizzi">
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="52dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:srcCompat="@drawable/pizza_background" />-->
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="156dp"
+            android:background="@color/white"
+            android:text="Hawaiian Pizza"
+            app:layout_constraintStart_toEndOf="@+id/HawaiianPizzaButton"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Button
+            android:id="@+id/button_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="56dp"
+            android:text="Store Orer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HawaiianPizzaButton" />
+
+        <Button
+            android:id="@+id/button_first2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:text="Current Order"
+            app:layout_constraintEnd_toStartOf="@+id/button_first"
+            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HawaiianPizzaButton" />
+
+        <ImageButton
+            android:id="@+id/DeluxePizzaButton"
+            android:layout_width="247dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="96dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Deluxe Pizza"
+            android:onClick="openAddPizzaActivity"
+            android:scaleType="fitCenter"
+            android:src="@drawable/deluxe_pizza"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="29dp" />
+
+        <ImageButton
+            android:id="@+id/pizzaPicture"
+            android:layout_width="247dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="28dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="PepperoniPizzaPicture"
+            android:onClick="openAddPizzaActivity"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pepperoni_pizza"
+            app:layout_constraintTop_toBottomOf="@+id/DeluxePizzaButton"
+            tools:layout_editor_absoluteX="14dp" />
+
+        <ImageButton
+            android:id="@+id/HawaiianPizzaButton"
+            android:layout_width="247dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="32dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="PepperoniPizzaPicture"
+            android:onClick="openAddPizzaActivity"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hawaiian_pizza"
+            app:layout_constraintTop_toBottomOf="@+id/pizzaPicture"
+            tools:layout_editor_absoluteX="14dp" />
+
+        <EditText
+            android:id="@+id/editTextPhone3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="Enter phone nuber"
+            app:layout_constraintBottom_toTopOf="@+id/DeluxePizzaButton"
+            tools:layout_editor_absoluteX="29dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="184dp"
+            android:background="@color/white"
+            android:text="Deluxe Pizza"
+            app:layout_constraintStart_toEndOf="@+id/DeluxePizzaButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="164dp"
+            android:background="@color/white"
+            android:text="Pepperoni Pizza"
+            app:layout_constraintStart_toEndOf="@+id/pizzaPicture"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
