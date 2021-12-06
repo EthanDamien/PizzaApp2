@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             addPizza.putExtra("phoneNumber", getPhoneNumber());
             addPizza.putExtra("name", view.getContentDescription());
             addPizza.putExtra("store", (Parcelable) storeOrders);
-            addPizza.putExtra("currOrder",(Parcelable) currOrder);
+            addPizza.putExtra("order", currOrder);
             startActivity(addPizza);
         }
     }

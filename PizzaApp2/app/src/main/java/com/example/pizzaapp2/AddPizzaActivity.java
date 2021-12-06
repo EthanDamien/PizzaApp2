@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import pizza_classes.Order;
+import pizza_classes.PepperoniPizza;
 import pizza_classes.Pizza;
 import pizza_classes.PizzaMaker;
 import pizza_classes.Size;
@@ -26,6 +28,7 @@ public class AddPizzaActivity extends AppCompatActivity{
     private Order currOrder;
     private ListView unusedToppings, currentToppings;
     private ImageView pizzaPicture;
+    private ImageButton orderUpButton;
     private TextView pizzaName, price;
     private Spinner pizzaSizesDropdown;
     private Size[] sizes = Size.values();
@@ -36,9 +39,12 @@ public class AddPizzaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_pizza_activity);
         Intent intent = getIntent();
-        currOrder = (Order) intent.getParcelableExtra("currOrder");
+        Bundle data = getIntent().getExtras();
+        currOrder = data.getParcelable("order");
+        Toast.makeText(getApplicationContext(), currOrder.getPhoneNumber(), Toast.LENGTH_SHORT).show();
         currentToppings = findViewById(R.id.currentToppings);
         unusedToppings = findViewById(R.id.unusedToppings);
+        orderUpButton = findViewById(R.id.orderUpButton);
         currentToppings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -130,6 +136,11 @@ public class AddPizzaActivity extends AppCompatActivity{
         unusedToppings.setAdapter(unusedToppingAdapter);
         currentToppings.setAdapter(currToppingAdapter);
 
+    }
+
+    public void orderUp(View view){
+        currOrder.addPizza(pizza);
+        super.onBackPressed();
     }
 
 //    public void addTopping(View view){

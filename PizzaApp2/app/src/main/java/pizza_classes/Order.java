@@ -44,6 +44,8 @@ public class Order implements Parcelable {
     protected Order(Parcel in) {
         phoneNumber = in.readString();
         currentPrice = in.readDouble();
+        pizzas = in.readArrayList(null);
+
     }
 
     public static final Creator<Order> CREATOR = new Creator<Order>() {
@@ -153,5 +155,6 @@ public class Order implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(phoneNumber);
         dest.writeDouble(currentPrice);
+        dest.writeList(pizzas);
     }
 }
