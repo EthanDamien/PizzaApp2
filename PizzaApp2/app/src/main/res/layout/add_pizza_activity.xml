@@ -138,30 +138,11 @@
 
 
 
+
+
+
+
         ]]>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="71dp"
-            android:layout_height="37dp"
-            android:layout_marginBottom="196dp"
-            android:onClick="addTopping"
-            android:text="@string/add_topping"
-            android:textSize="30px"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="71dp"
-            android:layout_height="37dp"
-            android:layout_marginBottom="119dp"
-            android:text="@string/delete_topping"
-            android:textSize="17px"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -171,7 +152,27 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/marios_pizza" />;
+            app:srcCompat="@drawable/marios_pizza" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="57dp"
+            android:layout_marginBottom="14dp"
+            android:text="Unadded"
+            app:layout_constraintBottom_toTopOf="@+id/unusedToppings"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="71dp"
+            android:layout_marginBottom="14dp"
+            android:text="Added"
+            app:layout_constraintBottom_toTopOf="@+id/currentToppings"
+            app:layout_constraintEnd_toEndOf="parent" />;
         android:text="@string/delete_topping"
         tools:layout_editor_absoluteX="170dp"
         tools:layout_editor_absoluteY="501dp" />

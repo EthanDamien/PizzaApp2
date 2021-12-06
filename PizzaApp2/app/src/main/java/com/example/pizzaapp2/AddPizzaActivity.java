@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import pizza_classes.Pizza;
 import pizza_classes.PizzaMaker;
+import pizza_classes.Size;
 import pizza_classes.Topping;
 
 public class AddPizzaActivity extends AppCompatActivity{
@@ -25,7 +26,7 @@ public class AddPizzaActivity extends AppCompatActivity{
     private ImageView pizzaPicture;
     private TextView pizzaName, price;
     private Spinner pizzaSizesDropdown;
-    private String[] sizes = new String[]{"Small", "Medium", "Large"};
+    private Size[] sizes = Size.values();
     private ArrayList<Topping> requiredToppings = new ArrayList<>();
 
     @Override
@@ -72,7 +73,20 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     private void setupDropdown(){
         pizzaSizesDropdown = findViewById(R.id.pizzaSizes);
-        ArrayAdapter<String> pizzaSizesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sizes);
+        pizzaSizesDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Size selected = (Size) ((ArrayAdapter)pizzaSizesDropdown.getAdapter()).getItem(i);
+                pizza.setSize(selected);
+                price.setText(pizza.priceFormatted());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        ArrayAdapter<Size> pizzaSizesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sizes);
         pizzaSizesDropdown.setAdapter(pizzaSizesAdapter);
     }
 
@@ -100,7 +114,8 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     private void updateToppings(){
         ArrayList<Topping> uTop = new ArrayList<Topping>();
-        ArrayList<Topping> cTop = pizza.getToppings();
+        ArrayList<Topping> cTop = new ArrayList<>();
+        cTop.addAll(pizza.getToppings());
         requiredToppings.addAll(pizza.getToppings());
         for(Topping t : Topping.values()){
             if(!cTop.contains(t)){
