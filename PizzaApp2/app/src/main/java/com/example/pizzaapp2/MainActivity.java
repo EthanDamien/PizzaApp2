@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openStoreOrdersActivity(View view) {
         Intent allOrders = new Intent(this, StoreOrdersActivity.class);
-        allOrders.putExtra("store", (Parcelable) storeOrders);
+        allOrders.putExtra("store", storeOrders);
         startActivity(allOrders);
     }
 
@@ -118,10 +118,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 1) {
-            Toast.makeText(getApplicationContext(), "It Worked!", Toast.LENGTH_SHORT).show();
             if (data.hasExtra("order")) {
                 Order tempOrder = (Order)data.getSerializableExtra("order");
                 currOrder = tempOrder;
+            }
+        }
+
+        if(resultCode == RESULT_OK && requestCode == 2) {
+            Toast.makeText(getApplication(), "Order Placed!", Toast.LENGTH_SHORT).show();
+            if(data.hasExtra("order")){
+                Order tempOrder = (Order)data.getSerializableExtra("order");
+                storeOrders.addOrder(tempOrder);
             }
         }
     }

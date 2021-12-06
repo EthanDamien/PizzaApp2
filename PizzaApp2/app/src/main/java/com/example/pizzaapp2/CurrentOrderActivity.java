@@ -3,9 +3,12 @@ package com.example.pizzaapp2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -20,6 +23,7 @@ public class CurrentOrderActivity extends Activity {
     private StoreOrders storeOrders;
     private Order currOrder;
     private TextView phoneNumber, amountOfPizzas;
+    private Button removePizzaButton, placeOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,19 @@ public class CurrentOrderActivity extends Activity {
         }
         ArrayAdapter<String> pizzaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pizzas);
         pizzaList.setAdapter(pizzaAdapter);
+    }
+
+    public void deletePizza(){
+
+    }
+
+    //Pass in the shits
+    public void placeOrder(View view){
+        Intent data = new Intent();
+        data.putExtra("order", currOrder);
+// Activity finished return ok, return the data
+        setResult(RESULT_OK, data);
+        finish();
     }
 
 }

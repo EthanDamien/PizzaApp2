@@ -139,12 +139,9 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     public void orderUp(View view){
         currOrder.addPizza(pizza);
-        Toast.makeText(getApplicationContext(), currOrder.getPizzas().get(0).toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Added : "+ currOrder.getPizzas().get(0).toString(), Toast.LENGTH_SHORT).show();
         Intent data = new Intent();
-        data.putExtra("key1", "value1");
-        data.putExtra("key2", "value2");
         data.putExtra("order", currOrder);
-// Activity finished return ok, return the data
         setResult(RESULT_OK, data);
         finish();
     }
