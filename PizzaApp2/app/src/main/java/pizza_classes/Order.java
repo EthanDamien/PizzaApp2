@@ -1,5 +1,8 @@
 package pizza_classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -7,7 +10,7 @@ import java.util.ArrayList;
  * This class represents an order.
  * @author Ethan Chang and Kevin Cubillos
  */
-public class Order {
+public class Order implements Parcelable {
 
     /** When there are no pizzas in order **/
     public static final int EMPTY = 0;
@@ -37,6 +40,23 @@ public class Order {
         this.pizzas = new ArrayList<>();
         this.currentPrice = EMPTY_ORDER_TOTAL;
     }
+
+    protected Order(Parcel in) {
+        phoneNumber = in.readString();
+        currentPrice = in.readDouble();
+    }
+
+    public static final Creator<Order> CREATOR = new Creator<Order>() {
+        @Override
+        public Order createFromParcel(Parcel in) {
+            return new Order(in);
+        }
+
+        @Override
+        public Order[] newArray(int size) {
+            return new Order[size];
+        }
+    };
 
     /**
      * Gets the phone number of the customer.
@@ -122,5 +142,16 @@ public class Order {
      */
     public int size(){
         return pizzas.size();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(phoneNumber);
+        dest.writeDouble(currentPrice);
     }
 }

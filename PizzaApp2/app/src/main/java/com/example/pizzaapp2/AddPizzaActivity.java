@@ -13,12 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import pizza_classes.Order;
 import pizza_classes.Pizza;
 import pizza_classes.PizzaMaker;
 import pizza_classes.Topping;
 
 public class AddPizzaActivity extends AppCompatActivity {
     private Pizza pizza;
+    private Order currOrder;
     private ListView unusedToppings, currentToppings;
     private ImageView pizzaPicture;
     private TextView pizzaName, price;
@@ -31,6 +33,7 @@ public class AddPizzaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_pizza_activity);
         Intent intent = getIntent();
+        currOrder = (Order) intent.getParcelableExtra("currOrder");
         setupDropdown();
         setupDescription(intent);
         updateToppings();
