@@ -63,11 +63,17 @@ public class CurrentOrderActivity extends Activity {
     private void setupPizzas(){
         pizzaList = findViewById(R.id.pizzaList);
         pizzaList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * When a pizza is selected on ListView, update the selected index
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedPizza = i;
             }
 
+            /**
+             * Place holder
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
