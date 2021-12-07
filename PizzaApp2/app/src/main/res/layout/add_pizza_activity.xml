@@ -36,7 +36,7 @@
             android:layout_height="171dp"
             android:layout_marginBottom="15dp"
             android:adjustViewBounds="true"
-            android:contentDescription="PepperoniPizzaPicture"
+            android:contentDescription="@string/pepperonipizzapicture"
             android:scaleType="fitCenter"
             android:src="@drawable/pepperoni_pizza"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="32dp"
-            android:text="pricePlaceholder"
+            android:text="@string/priceplaceholder"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/pizzaPicture" />
 
@@ -90,7 +90,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp"
             android:background="@color/white"
-            android:text="Pizza Type"
+            android:text="@string/deluxe_pizza"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toTopOf="@+id/pizzaPicture"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,6 +149,7 @@
             android:layout_width="94dp"
             android:layout_height="83dp"
             android:layout_marginBottom="16dp"
+            android:contentDescription="@string/the_button"
             android:onClick="orderUp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"
             android:layout_marginBottom="14dp"
-            android:text="Unadded"
+            android:text="@string/unadded"
             app:layout_constraintBottom_toTopOf="@+id/unusedToppings"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -172,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="71dp"
             android:layout_marginBottom="14dp"
-            android:text="Added"
+            android:text="@string/added"
             app:layout_constraintBottom_toTopOf="@+id/currentToppings"
             app:layout_constraintEnd_toEndOf="parent" />;
         android:text="@string/delete_topping"
