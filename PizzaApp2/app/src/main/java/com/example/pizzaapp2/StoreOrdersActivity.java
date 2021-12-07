@@ -74,6 +74,9 @@ public class StoreOrdersActivity extends Activity {
     private void setUpSpinner(){
         numberSpinner = findViewById(R.id.numberSpinner);
         numberSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Whenever a new order is selected, update the pizza list and selected index.
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedOrder = i;
