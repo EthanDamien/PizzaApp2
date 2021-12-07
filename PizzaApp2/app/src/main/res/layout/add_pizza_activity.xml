@@ -21,7 +21,7 @@
 
 
         <ImageButton
-            android:id="@+id/pizzaPicture"
+            android:id="@+id/pizza_picture"
             android:layout_width="247dp"
             android:layout_height="171dp"
             android:layout_marginBottom="15dp"
@@ -41,7 +41,7 @@
             android:layout_marginTop="32dp"
             android:text="@string/price"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pizzaPicture" />
+            app:layout_constraintTop_toBottomOf="@+id/pizza_picture" />
 
         <TextView
             android:id="@+id/price"
@@ -51,7 +51,7 @@
             android:layout_marginTop="32dp"
             android:text="@string/priceplaceholder"
             app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/pizzaPicture" />
+            app:layout_constraintTop_toBottomOf="@+id/pizza_picture" />
 
         <TextView
             android:id="@+id/textView7"
@@ -61,19 +61,19 @@
             android:layout_marginTop="72dp"
             android:text="@string/size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pizzaPicture" />
+            app:layout_constraintTop_toBottomOf="@+id/pizza_picture" />
 
         <Spinner
-            android:id="@+id/pizzaSizes"
+            android:id="@+id/pizza_sizes"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="48dp"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/pizzaPicture" />
+            app:layout_constraintTop_toBottomOf="@+id/pizza_picture" />
 
         <TextView
-            android:id="@+id/pizzaName"
+            android:id="@+id/pizza_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -82,7 +82,7 @@
             android:background="@color/white"
             android:text="@string/deluxe_pizza"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toTopOf="@+id/pizzaPicture"
+            app:layout_constraintBottom_toTopOf="@+id/pizza_picture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ListView
-            android:id="@+id/unusedToppings"
+            android:id="@+id/unused_toppings"
             android:layout_width="128dp"
             android:layout_height="219dp"
             android:layout_marginStart="24dp"
@@ -114,12 +114,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <ListView
-            android:id="@+id/currentToppings"
+            android:id="@+id/current_toppings"
             android:layout_width="129dp"
             android:layout_height="213dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="52dp"
-            app:layout_constraintStart_toEndOf="@+id/unusedToppings"
+            app:layout_constraintStart_toEndOf="@+id/unused_toppings"
             app:layout_constraintTop_toBottomOf="@+id/textView7" /><![CDATA[
 
         ;
@@ -135,7 +135,7 @@
         ]]>
 
         <ImageButton
-            android:id="@+id/orderUpButton"
+            android:id="@+id/order_up_button"
             android:layout_width="94dp"
             android:layout_height="83dp"
             android:layout_marginBottom="16dp"
@@ -154,7 +154,7 @@
             android:layout_marginStart="57dp"
             android:layout_marginBottom="14dp"
             android:text="@string/unadded"
-            app:layout_constraintBottom_toTopOf="@+id/unusedToppings"
+            app:layout_constraintBottom_toTopOf="@+id/unused_toppings"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -164,7 +164,7 @@
             android:layout_marginEnd="71dp"
             android:layout_marginBottom="14dp"
             android:text="@string/added"
-            app:layout_constraintBottom_toTopOf="@+id/currentToppings"
+            app:layout_constraintBottom_toTopOf="@+id/current_toppings"
             app:layout_constraintEnd_toEndOf="parent" />;
         android:text="@string/delete_topping"
         tools:layout_editor_absoluteX="170dp"

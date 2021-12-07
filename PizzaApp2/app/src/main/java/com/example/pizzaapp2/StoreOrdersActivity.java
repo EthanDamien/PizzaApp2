@@ -11,12 +11,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import pizza_classes.Order;
 import pizza_classes.Pizza;
 import pizza_classes.StoreOrders;
-import pizza_classes.Topping;
 
 /**
  * The Android activity that takes care of all Store Orders.
@@ -31,7 +29,6 @@ public class StoreOrdersActivity extends Activity {
 
     private ListView pizzaList;
     private Spinner numberSpinner;
-    private ListView allOrders;
 
     /**
      * The onCreate method for the Store Orders Activity.
@@ -44,14 +41,14 @@ public class StoreOrdersActivity extends Activity {
         setContentView(R.layout.store_orders_activity);
         Intent intent = getIntent();
         storeOrder = (StoreOrders) intent.getSerializableExtra("store");
-        pizzaList = findViewById(R.id.allOrders);
+        pizzaList = findViewById(R.id.all_orders);
         setUpSpinner();
         setupPizzas(0);
     }
 
     /**
      * Sets up the pizzas based on the number specified on the spinner
-     * @param i
+     * @param i index of spinner
      */
     private void setupPizzas(int i){
         if(numberSpinner.getCount() == 0){
@@ -72,7 +69,7 @@ public class StoreOrdersActivity extends Activity {
      * Sets up the spinner based on the available orders in the store
      */
     private void setUpSpinner(){
-        numberSpinner = findViewById(R.id.numberSpinner);
+        numberSpinner = findViewById(R.id.number_spinner);
         numberSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
              * Whenever a new order is selected, update the pizza list and selected index.

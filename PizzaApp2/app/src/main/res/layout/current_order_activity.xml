@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <ListView
-        android:id="@+id/pizzaList"
+        android:id="@+id/pizza_list"
         android:layout_width="397dp"
         android:layout_height="250dp"
         android:layout_marginStart="7dp"
@@ -42,10 +42,10 @@
         android:choiceMode="singleChoice"
         android:listSelector="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountOfPizzas" />
+        app:layout_constraintTop_toBottomOf="@+id/amount_of_pizzas" />
 
     <TextView
-        android:id="@+id/amountOfPizzas"
+        android:id="@+id/amount_of_pizzas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
-        android:id="@+id/phoneNumber"
+        android:id="@+id/phone_number"
         android:layout_width="142dp"
         android:layout_height="18dp"
         android:layout_marginTop="69dp"
@@ -72,7 +72,7 @@
         android:layout_marginTop="47dp"
         android:text="@string/subtotal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pizzaList" />
+        app:layout_constraintTop_toBottomOf="@+id/pizza_list" />
 
     <TextView
         android:id="@+id/subtotal"
@@ -82,7 +82,7 @@
         android:layout_marginTop="47dp"
         android:text="@string/_0_00"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/pizzaList" />
+        app:layout_constraintTop_toBottomOf="@+id/pizza_list" />
 
     <TextView
         android:id="@+id/textView16"
@@ -91,18 +91,18 @@
         android:layout_marginTop="47dp"
         android:layout_marginEnd="9dp"
         android:text="@string/sales_tax"
-        app:layout_constraintEnd_toStartOf="@+id/salesTax"
-        app:layout_constraintTop_toBottomOf="@+id/pizzaList" />
+        app:layout_constraintEnd_toStartOf="@+id/sales_tax"
+        app:layout_constraintTop_toBottomOf="@+id/pizza_list" />
 
     <TextView
-        android:id="@+id/salesTax"
+        android:id="@+id/sales_tax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
         android:layout_marginEnd="96dp"
         android:text="@string/_0_00"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pizzaList" />
+        app:layout_constraintTop_toBottomOf="@+id/pizza_list" />
 
     <TextView
         android:id="@+id/textView18"
@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/orderTotal"
+        android:id="@+id/order_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"

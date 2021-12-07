@@ -9,15 +9,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.pizzaapp2.databinding.ActivityMainBinding;
 
-import android.os.Parcelable;
-import android.text.Editable;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
-import java.io.Serializable;
 
 import pizza_classes.Order;
 import pizza_classes.StoreOrders;
@@ -48,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DeluxePizzaButton = findViewById(R.id.DeluxePizzaButton);
-        PepperoniPizzaButton = findViewById(R.id.PepperoniPizzaButton);
-        HawaiianPizzaButton = findViewById(R.id.HawaiianPizzaButton);
+        DeluxePizzaButton = findViewById(R.id.deluxe_pizza_button);
+        PepperoniPizzaButton = findViewById(R.id.pepperoni_pizza_button);
+        HawaiianPizzaButton = findViewById(R.id.hawaiian_pizza_button);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
@@ -115,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
      * @return true if valid, false if not
      */
     private boolean validPhoneNumber() {
-        phoneField = findViewById(R.id.phoneField);
+        phoneField = findViewById(R.id.phone_field);
         String number = getPhoneNumber();
         try {
             if (number.equals("") || number.length() != Order.PHONE_NUMBER_LENGTH) {

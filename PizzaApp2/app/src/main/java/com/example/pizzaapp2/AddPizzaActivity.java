@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import pizza_classes.Order;
-import pizza_classes.PepperoniPizza;
 import pizza_classes.Pizza;
 import pizza_classes.PizzaMaker;
 import pizza_classes.Size;
@@ -57,9 +56,9 @@ public class AddPizzaActivity extends AppCompatActivity{
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
         currOrder = (Order) data.getSerializable("order");
-        currentToppings = findViewById(R.id.currentToppings);
-        unusedToppings = findViewById(R.id.unusedToppings);
-        orderUpButton = findViewById(R.id.orderUpButton);
+        currentToppings = findViewById(R.id.current_toppings);
+        unusedToppings = findViewById(R.id.unused_toppings);
+        orderUpButton = findViewById(R.id.order_up_button);
         currentToppings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -98,7 +97,7 @@ public class AddPizzaActivity extends AppCompatActivity{
      * Sets up the dropdown with the available sizes
      */
     private void setupDropdown(){
-        pizzaSizesDropdown = findViewById(R.id.pizzaSizes);
+        pizzaSizesDropdown = findViewById(R.id.pizza_sizes);
         pizzaSizesDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
              * Selects an item on the spinner with sizes listed.
@@ -117,7 +116,7 @@ public class AddPizzaActivity extends AppCompatActivity{
 
             /**
              * Place holder
-             * @param adapterView
+             * @param adapterView the adapterView
              */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -130,12 +129,12 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     /**
      * Sets up the description based on the data passed into this Activity
-     * @param intent
+     * @param intent the intent
      */
     private void setupDescription(Intent intent){
-        pizzaPicture = findViewById(R.id.pizzaPicture);
+        pizzaPicture = findViewById(R.id.pizza_picture);
         price = findViewById(R.id.price);
-        pizzaName = findViewById(R.id.pizzaName);
+        pizzaName = findViewById(R.id.pizza_name);
         String name = intent.getStringExtra("name");
         pizzaName.setText(name);
         switch(name) {

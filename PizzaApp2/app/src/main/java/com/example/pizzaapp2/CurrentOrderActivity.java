@@ -9,15 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import pizza_classes.Order;
 import pizza_classes.Pizza;
-import pizza_classes.StoreOrders;
 
 /**
  * The Android activity that takes care of the current order.
@@ -47,11 +43,11 @@ public class CurrentOrderActivity extends Activity {
         Bundle data = getIntent().getExtras();
         currOrder = (Order) data.getSerializable("order");
         subtotal = findViewById(R.id.subtotal);
-        salesTax = findViewById(R.id.salesTax);
-        orderTotal = findViewById(R.id.orderTotal);
-        phoneNumber = findViewById(R.id.phoneNumber);
+        salesTax = findViewById(R.id.sales_tax);
+        orderTotal = findViewById(R.id.order_total);
+        phoneNumber = findViewById(R.id.phone_number);
         phoneNumber.setText(currOrder.getPhoneNumber());
-        amountOfPizzas = findViewById(R.id.amountOfPizzas);
+        amountOfPizzas = findViewById(R.id.amount_of_pizzas);
         amountOfPizzas.setText("Amount Of Pizzas: " + currOrder.size());
         setupPizzas();
         updateCostData();
@@ -61,7 +57,7 @@ public class CurrentOrderActivity extends Activity {
      * This method sets up all the Pizzas in the listView
      */
     private void setupPizzas(){
-        pizzaList = findViewById(R.id.pizzaList);
+        pizzaList = findViewById(R.id.pizza_list);
         pizzaList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
              * When a pizza is selected on ListView, update the selected index
