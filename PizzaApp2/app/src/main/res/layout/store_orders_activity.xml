@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoreOrdersActivity">
+    tools:context=".StoreOrdersActivity"
+    android:background="?android:attr/activatedBackgroundIndicator">
 
     <TextView
         android:id="@+id/textView12"
@@ -51,6 +52,8 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="24dp"
         android:background="#EFEFEF"
+        android:choiceMode="singleChoice"
+        android:listSelector="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberSpinner" />
 

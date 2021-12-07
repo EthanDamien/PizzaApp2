@@ -66,7 +66,7 @@ public class CurrentOrderActivity extends Activity {
     public void placeOrder(View view){
         Intent data = new Intent();
         data.putExtra("order", currOrder);
-// Activity finished return ok, return the data
+        // Activity finished return ok, return the data
         setResult(RESULT_OK, data);
         finish();
     }
