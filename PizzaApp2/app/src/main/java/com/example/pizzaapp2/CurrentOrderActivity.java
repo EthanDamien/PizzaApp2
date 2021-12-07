@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ public class CurrentOrderActivity extends Activity {
     private Order currOrder;
     private TextView phoneNumber, amountOfPizzas, subtotal, salesTax, orderTotal;
     private Button removePizzaButton, placeOrder;
+    private int selectedPizza;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,17 @@ public class CurrentOrderActivity extends Activity {
 
     private void setupPizzas(){
         pizzaList = findViewById(R.id.pizzaList);
+        pizzaList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedPizza = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         ArrayList<String> pizzas = new ArrayList<>();
         for(Pizza pizza: currOrder.getPizzas()){
             pizzas.add(pizza.toString());
@@ -58,8 +71,14 @@ public class CurrentOrderActivity extends Activity {
         orderTotal.setText(currOrder.getFinalPrice());
     }
 
-    public void deletePizza(){
-        updateCostData();
+    public void deletePizza(View view){
+        ArrayAdapter list = (ArrayAdapter) pizzaList.getAdapter();
+        if(list.getCount() > 0){
+            currOrder.removePizza(selectedPizza);
+
+            list.remove(list.getItem(selectedPizza));
+            updateCostData();
+        }
     }
 
     //Pass in the shits

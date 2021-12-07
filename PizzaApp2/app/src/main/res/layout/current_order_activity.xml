@@ -143,6 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginBottom="56dp"
+        android:onClick="deletePizza"
         android:text="Remove Pizza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
