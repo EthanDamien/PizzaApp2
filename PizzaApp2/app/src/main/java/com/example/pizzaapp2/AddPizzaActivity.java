@@ -100,6 +100,14 @@ public class AddPizzaActivity extends AppCompatActivity{
     private void setupDropdown(){
         pizzaSizesDropdown = findViewById(R.id.pizzaSizes);
         pizzaSizesDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Selects an item on the spinner with sizes listed.
+             * When a size is selected, update data accordingly.
+             * @param adapterView the adapter view
+             * @param view the view
+             * @param i the index of selected item
+             * @param l the id
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Size selected = (Size) ((ArrayAdapter)pizzaSizesDropdown.getAdapter()).getItem(i);
@@ -107,6 +115,10 @@ public class AddPizzaActivity extends AppCompatActivity{
                 price.setText(pizza.priceFormatted());
             }
 
+            /**
+             * Place holder
+             * @param adapterView
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
