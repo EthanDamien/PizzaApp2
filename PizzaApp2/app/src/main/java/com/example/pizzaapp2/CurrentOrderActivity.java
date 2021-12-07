@@ -19,13 +19,26 @@ import pizza_classes.Order;
 import pizza_classes.Pizza;
 import pizza_classes.StoreOrders;
 
+/**
+ * The Android activity that takes care of the current order.
+ * Manages the current order being processed.
+ * @author Ethan Chang and Kevin Cubillos
+ */
 public class CurrentOrderActivity extends Activity {
-    private ListView pizzaList;
-    private StoreOrders storeOrders;
+    /** The index of the selected Pizza **/
+    private int selectedPizza;
+    /** The current order being handled **/
     private Order currOrder;
+
+    private ListView pizzaList;
     private TextView phoneNumber, amountOfPizzas, subtotal, salesTax, orderTotal;
     private Button removePizzaButton, placeOrder;
-    private int selectedPizza;
+
+    /**
+     * The onCreate method for the currentOrder activity.
+     * Initializes needed information on this activity.
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +57,9 @@ public class CurrentOrderActivity extends Activity {
         updateCostData();
     }
 
+    /**
+     * This method sets up all the Pizzas in the listView
+     */
     private void setupPizzas(){
         pizzaList = findViewById(R.id.pizzaList);
         pizzaList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -65,12 +81,19 @@ public class CurrentOrderActivity extends Activity {
         pizzaList.setAdapter(pizzaAdapter);
     }
 
+    /**
+     * This method updates the cost data for each of the fields
+     */
     private void updateCostData(){
         subtotal.setText(currOrder.getSubtotal());
         salesTax.setText(currOrder.getTax());
         orderTotal.setText(currOrder.getFinalPrice());
     }
 
+    /**
+     * This method deletes the selected Pizza in the ListView
+     * @param view button that is pressed
+     */
     public void deletePizza(View view){
         ArrayAdapter list = (ArrayAdapter) pizzaList.getAdapter();
         if(list.getCount() > 0){
@@ -81,7 +104,12 @@ public class CurrentOrderActivity extends Activity {
         }
     }
 
-    //Pass in the shits
+
+    /**
+     * This places the order and returns to the previous screen while passing current order to
+     * be added
+     * @param view button that is pressed
+     */
     public void placeOrder(View view){
         Intent data = new Intent();
         data.putExtra("order", currOrder);
@@ -90,4 +118,16 @@ public class CurrentOrderActivity extends Activity {
         finish();
     }
 
+    /**
+     * This Overrides the onBackPressed method to account for just updating the current order
+     */
+    @Override
+    public void onBackPressed() {
+        Intent data = new Intent();
+        data.putExtra("order", currOrder);
+        // Activity finished return Cancelled, return the data
+        setResult(RESULT_CANCELED, data);
+        finish();
+        super.onBackPressed();
+    }
 }

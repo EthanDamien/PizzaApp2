@@ -23,17 +23,33 @@ import pizza_classes.PizzaMaker;
 import pizza_classes.Size;
 import pizza_classes.Topping;
 
+/**
+ * The Android activity that takes care of the current Pizza.
+ * Manages the new pizza can be added
+ * @author Ethan Chang and Kevin Cubillos
+ */
 public class AddPizzaActivity extends AppCompatActivity{
+    /** The current Pizza **/
     private Pizza pizza;
+    /** The current Order **/
     private Order currOrder;
+    /** The available pizza sizes based on the Enum **/
+    private Size[] sizes = Size.values();
+    /** The required toppings based on pizza type **/
+    private ArrayList<Topping> requiredToppings = new ArrayList<>();
+
     private ListView unusedToppings, currentToppings;
     private ImageView pizzaPicture;
     private ImageButton orderUpButton;
     private TextView pizzaName, price;
     private Spinner pizzaSizesDropdown;
-    private Size[] sizes = Size.values();
-    private ArrayList<Topping> requiredToppings = new ArrayList<>();
 
+
+    /**
+     * The onCreate method for the AddPizza activity.
+     * Initializes needed information on this activity.
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +94,9 @@ public class AddPizzaActivity extends AppCompatActivity{
         updateToppings();
     }
 
-
+    /**
+     * Sets up the dropdown with the available sizes
+     */
     private void setupDropdown(){
         pizzaSizesDropdown = findViewById(R.id.pizzaSizes);
         pizzaSizesDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -98,6 +116,10 @@ public class AddPizzaActivity extends AppCompatActivity{
         pizzaSizesDropdown.setAdapter(pizzaSizesAdapter);
     }
 
+    /**
+     * Sets up the description based on the data passed into this Activity
+     * @param intent
+     */
     private void setupDescription(Intent intent){
         pizzaPicture = findViewById(R.id.pizzaPicture);
         price = findViewById(R.id.price);
@@ -120,6 +142,9 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Fills in the toppings in both List Views
+     */
     private void updateToppings(){
         ArrayList<Topping> uTop = new ArrayList<Topping>();
         ArrayList<Topping> cTop = new ArrayList<>();
@@ -137,6 +162,10 @@ public class AddPizzaActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Adds the pizza to the order and passes in the new order information back to the parent
+     * @param view button being pressed
+     */
     public void orderUp(View view){
         currOrder.addPizza(pizza);
         Toast.makeText(getApplicationContext(), "Added : "+ currOrder.getPizzas().get(0).toString(), Toast.LENGTH_SHORT).show();
@@ -146,19 +175,14 @@ public class AddPizzaActivity extends AppCompatActivity{
         finish();
     }
 
-//    public void addTopping(View view){
-//        price = findViewById(R.id.price);
-//        Topping selected = (Topping) currentToppings.getSelectedItem();
-//        if(selected == null){
-//            return;
-//        }
-//        if(pizza.addTopping(selected)){
-//            ((ArrayAdapter)currentToppings.getAdapter()).add(selected);
-//            ((ArrayAdapter)unusedToppings.getAdapter()).remove(selected);
-//            price.setText(pizza.priceFormatted());
-//        }
-//        else{
-//            Toast.makeText(getApplicationContext(), "Max Toppings Reached", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    /**
+     * This Overrides the onBackPressed method to pass nothing back since nothing is done.
+     */
+    @Override
+    public void onBackPressed() {
+        // Activity finished return Cancelled, return the data
+        setResult(RESULT_CANCELED, null);
+        finish();
+        super.onBackPressed();
+    }
 }
