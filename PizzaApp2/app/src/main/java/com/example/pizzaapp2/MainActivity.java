@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             currentOrder.putExtra("phoneNumber", getPhoneNumber());
             currentOrder.putExtra("store", storeOrders);
             currentOrder.putExtra("order", currOrder);
-            startActivity(currentOrder);
+            startActivityForResult(currentOrder, 2);
         }
     }
 
