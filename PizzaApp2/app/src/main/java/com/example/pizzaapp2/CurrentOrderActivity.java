@@ -33,6 +33,9 @@ public class CurrentOrderActivity extends Activity {
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
         currOrder = (Order) data.getSerializable("order");
+        subtotal = findViewById(R.id.subtotal);
+        salesTax = findViewById(R.id.salesTax);
+        orderTotal = findViewById(R.id.orderTotal);
         phoneNumber = findViewById(R.id.phoneNumber);
         phoneNumber.setText(currOrder.getPhoneNumber());
         amountOfPizzas = findViewById(R.id.amountOfPizzas);
@@ -63,9 +66,6 @@ public class CurrentOrderActivity extends Activity {
     }
 
     private void updateCostData(){
-        subtotal = findViewById(R.id.subtotal);
-        salesTax = findViewById(R.id.salesTax);
-        orderTotal = findViewById(R.id.orderTotal);
         subtotal.setText(currOrder.getSubtotal());
         salesTax.setText(currOrder.getTax());
         orderTotal.setText(currOrder.getFinalPrice());
