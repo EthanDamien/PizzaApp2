@@ -23,7 +23,7 @@ public class StoreOrdersActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_orders_activity);
         Intent intent = getIntent();
-        storeOrder = intent.getParcelableExtra("store");
+        storeOrder = (StoreOrders) intent.getSerializableExtra("store");
         setupOrders();
     }
 

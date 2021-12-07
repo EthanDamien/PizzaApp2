@@ -22,7 +22,7 @@ public class CurrentOrderActivity extends Activity {
     private ListView pizzaList;
     private StoreOrders storeOrders;
     private Order currOrder;
-    private TextView phoneNumber, amountOfPizzas;
+    private TextView phoneNumber, amountOfPizzas, subtotal, salesTax, orderTotal;
     private Button removePizzaButton, placeOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +31,12 @@ public class CurrentOrderActivity extends Activity {
         Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
         currOrder = (Order) data.getSerializable("order");
-        storeOrders = intent.getParcelableExtra("store");
         phoneNumber = findViewById(R.id.phoneNumber);
         phoneNumber.setText(currOrder.getPhoneNumber());
         amountOfPizzas = findViewById(R.id.amountOfPizzas);
         amountOfPizzas.setText("Amount Of Pizzas: " + currOrder.size());
         setupPizzas();
+        updateCostData();
     }
 
     private void setupPizzas(){
@@ -49,8 +49,17 @@ public class CurrentOrderActivity extends Activity {
         pizzaList.setAdapter(pizzaAdapter);
     }
 
-    public void deletePizza(){
+    private void updateCostData(){
+        subtotal = findViewById(R.id.subtotal);
+        salesTax = findViewById(R.id.salesTax);
+        orderTotal = findViewById(R.id.orderTotal);
+        subtotal.setText(currOrder.getSubtotal());
+        salesTax.setText(currOrder.getTax());
+        orderTotal.setText(currOrder.getFinalPrice());
+    }
 
+    public void deletePizza(){
+        updateCostData();
     }
 
     //Pass in the shits
